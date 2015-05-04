@@ -1,12 +1,10 @@
 from numpy import argmin, array, empty, mean, sum  
 
-
-
 def comparison(data, means): #Method by which we cluster
 
 	return argmin([sum((point - means)**2, axis = 1) for point in data], axis = 1)
 
-def kmeans(data, *means): #Kmeans clustering function
+def kmeans(data, means): #Kmeans clustering function
 
 	K = len(means)
 	old_means = array(means)*0
@@ -19,6 +17,20 @@ def kmeans(data, *means): #Kmeans clustering function
 		means = array([mean(data[clusters == i], axis = 0) for i in xrange(K)])
 		print "".join(( '\033[93m',"".join(('|' for i in xrange(K))))),'\033[92m','\033[0m' #prints bars indicating K for multi processing.
 	return array([data[clusters == i] for i in xrange(K)]), means
+
+def kmeans_struct(data, means): #For use with structured Array
+
+	data_view = data.view((data.dtype[0], len(data.dtype.names)))
+	means_view = means.view((means.dtype[0], len(means.dtype.names)))
+	old_means = empty(means_view.shape, dtype = means_view.dtype)
+	clusters = empty(data_view.shape[0], dtype = '>i4')
+	K = means_view.shape[0]
+	while (old_means != means_view).any():
+		clusters[::] = comparison(data_view, means_view)
+		old_means[::] = means_view[::]
+		means_view[::] = [mean(data_view[clusters == i], axis = 0) for i in xrange(K)]
+	return [data[clusters == i] for i in xrange(K)], means	
+
 
 def kmeans_generator(data, *means): #Kmeans clustering function as a generator for each step.  Used to observe progress of clustering code.
 
