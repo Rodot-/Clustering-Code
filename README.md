@@ -1,27 +1,27 @@
 # Clustering-Code
 Repository to Hold onto Various Clustering Tools.
 
-Contents
+##Contents
 ====
-kmeans.py
+###kmeans.py
 ----
 K-Means Clustering Code.
 
-Methods:
+####Methods:
 
-comparison(data, means):
+#####comparison(data, means):
 
   How the data is clustered.  Computes the euclidian distance between a data point and each mean, then finds the minimum.  Using the argmin function, this method finds the minimum for every point in data and returns an array of cluster indecies.  Cluster indecies are values whose index matches an index in data and whose value designates which cluster it belongs to.
 
--kmeans(data, means):
+#####kmeans(data, means):
 
   Basic K-means clustering method.  Takes in an NxM matrix of data points, and an KxM matrix of means.  Returns a list of K subsets of data (i.e. clusters), each subset is of the same form as data.
 
--kmeans_struct(data, means):
+#####kmeans_struct(data, means):
 
   This works similarly to kmeans, but instead of a matrix input, this method takes numpy strucutred arrays.  The data and means must have the same dtype.   Returns a list of K subsets of data (clusters), each with the same dtype as data.
 
--arg_[METHOD]
+#####arg_[METHOD]
 
   Any method beginning with 'arg_' returns the array of cluster indecies rather than the clusters themselves.  Useful for clustering data sets in which all columns do not need to be clustered.
 
