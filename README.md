@@ -10,7 +10,7 @@ K-Means Clustering Code.
 
 #####comparison(data, means):
 
-  How the data is clustered.  Computes the euclidian distance between a data point and each mean, then finds the minimum.  Using the argmin function, this method finds the minimum for every point in data and returns an array of cluster indecies.  Cluster indecies are values whose index matches an index in data and whose value designates which cluster it belongs to.
+  How the data is clustered.  Computes the euclidian distance between a data point and each mean, then finds the minimum.  Using the argmin function, this method finds the minimum for every point in data and returns an array of cluster indecies.  Cluster indecies are values whose index matches an index in data and whose values designate the cluster to which it belongs.
   
   Returns: clusters, means
 
