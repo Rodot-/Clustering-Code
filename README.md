@@ -11,6 +11,8 @@ K-Means Clustering Code.
 #####comparison(data, means):
 
   How the data is clustered.  Computes the euclidian distance between a data point and each mean, then finds the minimum.  Using the argmin function, this method finds the minimum for every point in data and returns an array of cluster indecies.  Cluster indecies are values whose index matches an index in data and whose value designates which cluster it belongs to.
+  
+  Returns: clusters, means
 
 #####kmeans(data, means):
 
@@ -20,9 +22,13 @@ K-Means Clustering Code.
 
   This works similarly to kmeans, but instead of a matrix input, this method takes numpy strucutred arrays.  The data and means must have the same dtype.   Returns a list of K subsets of data (clusters), each with the same dtype as data.
 
+  Returns: clusters, means
+
 #####arg_[METHOD]
 
   Any method beginning with 'arg_' returns the array of cluster indecies rather than the clusters themselves.  Useful for clustering data sets in which all columns do not need to be clustered.
+  
+  Returns: cluster indecies, means
   
 ####Examples:
 
