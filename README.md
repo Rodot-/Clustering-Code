@@ -23,6 +23,32 @@ K-Means Clustering Code.
 #####arg_[METHOD]
 
   Any method beginning with 'arg_' returns the array of cluster indecies rather than the clusters themselves.  Useful for clustering data sets in which all columns do not need to be clustered.
+  
+####Examples:
+
+    >>> from kmeans import *
+    >>> import numpy as np
+    >>> Data = np.arange(50).reshape((10,5))
+    >>> Means = np.arange(15).reshape((3,5))
+    >>> Means
+    array([[ 0,  1,  2,  3,  4],
+           [ 5,  6,  7,  8,  9],
+           [10, 11, 12, 13, 14]])
+    >>> clusters, means = kmean(Data, Means)
+    >>> clusters.shape
+    (3,)
+    >>> clusters[0]
+    array([[ 0,  1,  2,  3,  4],
+           [ 5,  6,  7,  8,  9],
+           [10, 11, 12, 13, 14]])
+    >>> means.shape
+    (3, 5)
+    >>> means
+    array([[  5. ,   6. ,   7. ,   8. ,   9. ],
+           [ 20. ,  21. ,  22. ,  23. ,  24. ],
+           [ 37.5,  38.5,  39.5,  40.5,  41.5]])
+
+    
 
   
 
