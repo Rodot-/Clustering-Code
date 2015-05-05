@@ -2,7 +2,6 @@
 Repository to Hold onto Various Clustering Tools.
 
 ##Contents
-====
 ###kmeans.py
 ----
 K-Means Clustering Code.
