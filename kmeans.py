@@ -44,7 +44,7 @@ def kmeans_struct(data, means): #For use with structured Array
 		means_view[::] = [mean(data_view[clusters == i], axis = 0) for i in xrange(K)]
 	return [data[clusters == i] for i in xrange(K)], means	
 
-def kmeans_struct(data, means): #For use with structured Array
+def arg_kmeans_struct(data, means): #For use with structured Array
 
 	data_view = data.view((data.dtype[0], len(data.dtype.names)))
 	means_view = means.view((means.dtype[0], len(means.dtype.names)))
