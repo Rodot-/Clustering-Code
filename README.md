@@ -20,7 +20,7 @@ K-Means Clustering Code.
 
 #####kmeans_struct(data, means):
 
-  This works similarly to kmeans, but instead of a matrix input, this method takes numpy strucutred arrays.  The data and means must have the same dtype.   Returns a list of K subsets of data (clusters), each with the same dtype as data.
+  This works similarly to kmeans, but instead of a matrix input, this method takes numpy structured arrays.  The data and means must have the same dtype.   Returns a list of K subsets of data (clusters), each with the same dtype as data.
 
   Returns: clusters, means
 
