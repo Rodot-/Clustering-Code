@@ -40,7 +40,7 @@ K-Means Clustering Code.
     array([[ 0,  1,  2,  3,  4],
            [ 5,  6,  7,  8,  9],
            [10, 11, 12, 13, 14]])
-    >>> clusters, means = kmean(Data, Means)
+    >>> clusters, means = kmeans(Data, Means)
     >>> clusters.shape
     (3,)
     >>> clusters[0]
