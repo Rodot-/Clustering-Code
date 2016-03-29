@@ -1,13 +1,13 @@
-from numpy import argmin, array, empty, mean, sum  
-
+from numpy import argmin, array, empty, mean, sum, absolute as abs, std, percentile, argmax, where, logical_and, in1d
+from numpy.random import choice
 def comparison(data, means): #Method by which we cluster
 
-	return argmin([sum((point - means)**2, axis = 1) for point in data], axis = 1)
+	return argmin([sum(abs(point - means)**2, axis = 1) for point in data], axis = 1)
 
 def kmeans(data, means): #Kmeans clustering function
 
 	K = len(means)
-	old_means = array(means)*0
+	old_means = array(means)*0.0
 	means = array(means)
 	data = array(data)
 	clusters = empty(len(data), dtype = '>i4') #An array of cluster indecies
@@ -15,6 +15,10 @@ def kmeans(data, means): #Kmeans clustering function
 		clusters[0:] = comparison(data, means)
 		old_means = means
 		means = array([mean(data[clusters == i], axis = 0) for i in xrange(K)])
+		for k in filter(lambda k: k not in clusters, xrange(K)):
+			print "Warning: Empty Cluster"
+			print "Attempting to Correct"
+			means[k] = mean(data[choice(range(len(data)), len(data)/K)], axis = 0)
 		print "".join(( '\033[93m',"".join(('|' for i in xrange(K))))),'\033[92m','\033[0m' #prints bars indicating K for multi processing.
 	return array([data[clusters == i] for i in xrange(K)]), means
 
@@ -29,6 +33,11 @@ def arg_kmeans(data, means): #returns the index array of the clusters
 		clusters[0:] = comparison(data, means)
 		old_means = means
 		means = array([mean(data[clusters == i], axis = 0) for i in xrange(K)])
+		for k in filter(lambda k: k not in clusters, xrange(K)):
+			print "Warning: Empty Cluster"
+			print "Attempting to Correct"
+			means[k] = mean(data[choice(range(len(data)), len(data)/K)], axis = 0)
+
 	return clusters, means
 
 def kmeans_struct(data, means): #For use with structured Array
