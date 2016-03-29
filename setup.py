@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
 name = 'kmeans', 
@@ -8,7 +8,7 @@ url = 'http://github.com/Rodot-/Clustering-Code',
 author = 'John (Jack) T O\'Brien',
 author_email = 'john.t.obrien@drexel.edu',
 license = 'GNU',
-packages = ['kmeans'],
+packages = find_packages(),
 zip_safe = False)
 
 
